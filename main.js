@@ -10,6 +10,7 @@ const eight = document.getElementById('eight')
 const nine = document.getElementById('nine')
 const zero = document.getElementById('zero')
 const btnEmpezar = document.getElementById('btnEmpezar')
+const screen = document.getElementById('screen')
 const ULTIMO_NIVEL = 3
 
 class Juego {
@@ -44,7 +45,8 @@ class Juego {
     generarSecuencia() {
         this.secuencia = new Array(ULTIMO_NIVEL)
         .fill(0)
-        .map(n => Math.floor(Math.random()*3))
+        .map(n => Math.floor(Math.random()*10))
+        console.log(this.secuencia)
     }
     siguienteNivel() {
         this.subNivel=0 
@@ -100,9 +102,11 @@ class Juego {
         }
     }
     iniciarSecuencia(){
+        debugger
         for(let i =0; i< this.nivel; i++){
             const numero = this.transformarNumberAString(this.secuencia[i])
-            setTimeout(() => this.iluminarNumero(numero), 1000 * i)
+            console.log(numero)
+            setTimeout(() => this.iluminarNumero(numero), 1200*i)
         }
     }
     iluminarNumero(number){
@@ -137,26 +141,39 @@ class Juego {
         this.numbers.zero.removeEventListener('click', this.elegirNumero)
     }
     elegirNumero(ev){
-        console.log(ev)
         const nameNumber = ev.target.dataset.element
         const digitNumber = this.transformarStringANumber(nameNumber)
         this.iluminarNumero(nameNumber)
+        this.mostrarNumero (digitNumber)
+        console.log(`el numero seleccionado es ${digitNumber} y el que debia elegir era ${this.secuencia[this.subNivel]}`)
         if(digitNumber === this.secuencia[this.subNivel]){
             this.subNivel++
             if(this.subNivel === this.nivel) {
                 this.nivel++
+                setTimeout (() => this.eliminarDatosPantalla(), 1000)
                 this.eliminarEventosClick()
-            if(this.nivel === (ULTIMO_NIVEL + 1)){
-               this.ganoElJuego()
-                
-            }else{
-                setTimeout(this.siguienteNivel, 1500)
-        
-            }
+                if(this.nivel === (ULTIMO_NIVEL + 1)){
+                this.eliminarDatosPantalla()
+                this.ganoElJuego()
+                    
+                }else{
+                    setTimeout (() => this.eliminarDatosPantalla(), 1000)
+                    setTimeout(this.siguienteNivel, 1500)
+                }
             }
         }else {
+            this.eliminarDatosPantalla()
+            this.eliminarEventosClick
             this.perdioElJuego()
         }
+    }
+
+    mostrarNumero(digitNumber) {
+        screen.innerHTML+= digitNumber
+    }
+
+    eliminarDatosPantalla(){
+        screen.innerHTML = null
     }
 
     ganoElJuego () { 
@@ -167,12 +184,12 @@ class Juego {
     }
     perdioElJuego () { 
         swal("Perdiste", "Vuelve a intentarlo", "error")
-            .then(() => {
-                this.eliminarEventosClick
-                this.inicializar()
+            .then(() => {  
+                location.reload();
             })
     }
 }
+
 function iniciarJuego() {
     window.juego = new Juego()
 }
