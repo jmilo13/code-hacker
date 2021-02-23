@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root{
+    --generalBackground: #17202A; /*url(http://media.biobiochile.cl/wp-content/uploads/2016/02/binariocode.jpg) ; */
+    --keyboardBackground: #616A6B;
+    --keyboard-bytton: #9C27B0;
+    --colorScreen: #AED6F1;
+    --letters: #D0D3D4;
+    --secondaryButtons: #BB8FCE ;
+}
+
+body {
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body .rules{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+}
+
+body .rules h1{
+    color: var(--letters);
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+body .rules p{
+    color: var(--letters);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+body .rules .button-level{
+    width: 9rem;
+    height: 3.5rem;
+    background: var(--secondaryButtons);
+}
+body .background{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: var(--generalBackground);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(0.3) blur(2px);
+    z-index: -1;
+}
+
+body .gameboard {
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr;
+    overflow: hidden;
+    width: 30rem;
+    background-color: var(--keyboardBackground);
+    padding: 2rem;
+    box-shadow: inset -1px -1px 18px 0px rgba(0,0,0,0.77);
+}
+
+body .gameboard #screen {
+    grid-column: 1 / 4;
+    background-color: var(--colorScreen);
+    box-shadow: inset -1px -1px 18px 0px rgba(0,0,0,0.44);
+    margin-bottom: 1rem;
+}
+
+body .gameboard .btn-number h1{
+    font-size: 4rem;
+}
+
+body .gameboard .keyboard{
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr;
+    grid-column: 1 / 4;
+    grid-row: 2 / 6;
+}
+
+body .gameboard .keyboard .btn-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--keyboard-bytton);
+    margin: 1rem;
+    box-shadow: inset -1px -1px 18px 0px rgba(0, 0, 0, 0.3);   
+}
+
+body .gameboard .keyboard #cero{
+    grid-column: 2;
+}
+
+body .gameboard .btn-start {
+    background-color: var(--secondaryButtons);
+   
+    grid-column: 1 / 4;
+       grid-row: 2 / 6;
+       border: none;
+       box-shadow: inset -1px -1px 18px 0px rgba(0,0,0,0.44);
+       font-size: 2rem;
+       font-weight: 700;
+   }
+
+.light{
+    filter: brightness(1.3);
+}
+
+.hide {
+    display: none;
+}
