@@ -52,6 +52,7 @@ body .rules .button-level{
     width: 9rem;
     height: 3.5rem;
     background: var(--secondaryButtons);
+    cursor: pointer;
 }
 body .background{
     position: absolute;
@@ -81,10 +82,6 @@ body .gameboard #screen {
     margin-bottom: 1rem;
 }
 
-body .gameboard .btn-number h1{
-    font-size: 4rem;
-}
-
 body .gameboard .keyboard{
     display: grid;
     grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr;
@@ -99,9 +96,12 @@ body .gameboard .keyboard .btn-number {
     background: var(--keyboard-bytton);
     margin: 1rem;
     box-shadow: inset -1px -1px 18px 0px rgba(0, 0, 0, 0.3);   
+    cursor: pointer;
+    font-size: 4rem;
+    font-weight: 700;
 }
 
-body .gameboard .keyboard #cero{
+body .gameboard .keyboard #zero{
     grid-column: 2;
 }
 
@@ -114,6 +114,7 @@ body .gameboard .btn-start {
        box-shadow: inset -1px -1px 18px 0px rgba(0,0,0,0.44);
        font-size: 2rem;
        font-weight: 700;
+       cursor: pointer;
    }
 
 .light{

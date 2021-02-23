@@ -1,10 +1,16 @@
 
-const celeste = document.getElementById('celeste')
-const violeta = document.getElementById('violeta')
-const naranja = document.getElementById('naranja')
-const verde = document.getElementById('verde')
+const one = document.getElementById('one')
+const two = document.getElementById('two')
+const three = document.getElementById('three')
+const four = document.getElementById('four')
+const five = document.getElementById('five')
+const six = document.getElementById('six')
+const seven = document.getElementById('seven')
+const eight = document.getElementById('eight')
+const nine = document.getElementById('nine')
+const zero = document.getElementById('zero')
 const btnEmpezar = document.getElementById('btnEmpezar')
-const ULTIMO_NIVEL = 1
+const ULTIMO_NIVEL = 3
 
 class Juego {
     constructor() {
@@ -14,15 +20,22 @@ class Juego {
     }
 
     inicializar() {
-        this.elegirColor = this.elegirColor.bind(this)
+        this.elegirNumero = this.elegirNumero.bind(this)
         this.siguienteNivel = this.siguienteNivel.bind(this)
+        this.transformarStringANumber = this.transformarStringANumber.bind(this)
         this.toggleBtn()
         this.nivel = 1
-        this.colores = {
-            celeste,
-            violeta,
-            naranja,
-            verde,
+        this.numbers = {
+            one,
+            two,
+            three,
+            four,
+            five,
+            six,
+            seven,
+            eight,
+            nine,
+            zero
         }
     }
     toggleBtn(){
@@ -31,67 +44,104 @@ class Juego {
     generarSecuencia() {
         this.secuencia = new Array(ULTIMO_NIVEL)
         .fill(0)
-        .map(n => Math.floor(Math.random()*4))
+        .map(n => Math.floor(Math.random()*3))
     }
     siguienteNivel() {
-        this.subNivel=0 //se pueden crear atributos
+        this.subNivel=0 
         this.iniciarSecuencia()
         this.agregarEventosClick()
     }
-    transformarColorANumero (numero){
-        switch(numero){
-            case 'celeste':
-                return 0
-            case 'violeta':
+    transformarStringANumber (nameNumber){
+        switch(nameNumber){
+            case 'one':
                 return 1
-            case 'naranja':
+            case 'two':
                 return 2
-            case 'verde':
+            case 'three':
                 return 3
+            case 'four':
+                return 4
+            case 'five':
+                return 5
+            case 'six':
+                return 6
+            case 'seven':
+                return 7
+            case 'eight':
+                return 8
+            case 'nine':
+                return 9
+            case 'zero':
+                return 0          
         }
     }
-    transformarNumeroAColor (numero){
+    transformarNumberAString (numero){
         switch(numero){
-            case 0:
-                return 'celeste'
             case 1:
-                return 'violeta'
+                return 'one'
             case 2:
-                return 'naranja'
+                return 'two'
             case 3:
-                return 'verde'
+                return 'three'
+            case 4:
+                return 'four'
+            case 5:
+                return 'five'
+            case 6:
+                return 'six'
+            case 7:
+                return 'seven'
+            case 8:
+                return 'eight'
+            case 9:
+                return 'nine'
+            case 0:
+                return 'zero' 
         }
     }
     iniciarSecuencia(){
         for(let i =0; i< this.nivel; i++){
-            const color = this.transformarNumeroAColor(this.secuencia[i])
-            setTimeout(() => this.iluminarColor(color), 1000 * i)
+            const numero = this.transformarNumberAString(this.secuencia[i])
+            setTimeout(() => this.iluminarNumero(numero), 1000 * i)
         }
     }
-    iluminarColor(color){
-        this.colores[color].classList.add('light')
-        setTimeout(() => this.apagarColor(color), 350)
+    iluminarNumero(number){
+        this.numbers[number].classList.add('light')
+        setTimeout(() => this.apagarNumero(number), 350)
     }
-    apagarColor(color){
-        this.colores[color].classList.remove('light')
+    apagarNumero(number){
+        this.numbers[number].classList.remove('light')
     }
     agregarEventosClick(){
-        this.colores.celeste.addEventListener('click', this.elegirColor)
-        this.colores.violeta.addEventListener('click', this.elegirColor)
-        this.colores.naranja.addEventListener('click', this.elegirColor)
-        this.colores.verde.addEventListener('click', this.elegirColor)
+        this.numbers.one.addEventListener('click', this.elegirNumero)
+        this.numbers.two.addEventListener('click', this.elegirNumero)
+        this.numbers.three.addEventListener('click', this.elegirNumero)
+        this.numbers.four.addEventListener('click', this.elegirNumero)
+        this.numbers.five.addEventListener('click', this.elegirNumero)
+        this.numbers.six.addEventListener('click', this.elegirNumero)
+        this.numbers.seven.addEventListener('click', this.elegirNumero)
+        this.numbers.eight.addEventListener('click', this.elegirNumero)
+        this.numbers.nine.addEventListener('click', this.elegirNumero)
+        this.numbers.zero.addEventListener('click', this.elegirNumero)
     }
     eliminarEventosClick(){
-        this.colores.celeste.removeEventListener('click', this.elegirColor)
-        this.colores.violeta.removeEventListener('click', this.elegirColor)
-        this.colores.naranja.removeEventListener('click', this.elegirColor)
-        this.colores.verde.removeEventListener('click', this.elegirColor)
+        this.numbers.one.removeEventListener('click', this.elegirNumero)
+        this.numbers.two.removeEventListener('click', this.elegirNumero)
+        this.numbers.three.removeEventListener('click', this.elegirNumero)
+        this.numbers.four.removeEventListener('click', this.elegirNumero)
+        this.numbers.five.removeEventListener('click', this.elegirNumero)
+        this.numbers.six.removeEventListener('click', this.elegirNumero)
+        this.numbers.seven.removeEventListener('click', this.elegirNumero)
+        this.numbers.eight.removeEventListener('click', this.elegirNumero)
+        this.numbers.nine.removeEventListener('click', this.elegirNumero)
+        this.numbers.zero.removeEventListener('click', this.elegirNumero)
     }
-    elegirColor(ev){
-        const nombreColor = ev.target.dataset.color
-        const numeroColor = this.transformarColorANumero(nombreColor)
-        this.iluminarColor(nombreColor)
-        if(numeroColor === this.secuencia[this.subNivel]){
+    elegirNumero(ev){
+        console.log(ev)
+        const nameNumber = ev.target.dataset.element
+        const digitNumber = this.transformarStringANumber(nameNumber)
+        this.iluminarNumero(nameNumber)
+        if(digitNumber === this.secuencia[this.subNivel]){
             this.subNivel++
             if(this.subNivel === this.nivel) {
                 this.nivel++
@@ -123,7 +173,7 @@ class Juego {
             })
     }
 }
-function empezarJuego() {
+function iniciarJuego() {
     window.juego = new Juego()
 }
 
