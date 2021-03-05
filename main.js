@@ -11,7 +11,34 @@ const nine = document.getElementById('nine')
 const zero = document.getElementById('zero')
 const btnEmpezar = document.getElementById('btnEmpezar')
 const screen = document.getElementById('screen')
-const ULTIMO_NIVEL = 3
+const difficultEasy = document.getElementById('easy')
+const difficultMedium = document.getElementById('medium')
+const difficultHigh = document.getElementById('high')
+
+let ultimoNivel
+
+difficultEasy.addEventListener('click', level)
+difficultMedium.addEventListener('click', level)
+difficultHigh.addEventListener('click', level)
+
+function level (data) {
+    const levelButtom = data.target.dataset.level
+    ultimoNivel = getNumberLevel(levelButtom)
+}
+
+function getNumberLevel (level){
+        switch(level){
+            case 'easy':
+                difficultEasy.classList.toggle('light')
+                return 5
+            case 'medium':
+                difficultMedium.classList.toggle('light')
+                return 10
+            case 'high':
+                difficultHigh.classList.toggle('light')
+                return 15
+        }
+}
 
 class Juego {
     constructor() {
@@ -21,6 +48,9 @@ class Juego {
     }
 
     inicializar() {
+        if(!ultimoNivel){
+            swal("Atención", "Debes elegir un nivel", "warning")
+        }else{
         this.elegirNumero = this.elegirNumero.bind(this)
         this.siguienteNivel = this.siguienteNivel.bind(this)
         this.transformarStringANumber = this.transformarStringANumber.bind(this)
@@ -39,11 +69,12 @@ class Juego {
             zero
         }
     }
+    }
     toggleBtn(){
         btnEmpezar.classList.toggle('hide')
     }
     generarSecuencia() {
-        this.secuencia = new Array(ULTIMO_NIVEL)
+        this.secuencia = new Array(ultimoNivel)
         .fill(0)
         .map(n => Math.floor(Math.random()*10))
         console.log(this.secuencia)
@@ -102,10 +133,8 @@ class Juego {
         }
     }
     iniciarSecuencia(){
-        debugger
         for(let i =0; i< this.nivel; i++){
             const numero = this.transformarNumberAString(this.secuencia[i])
-            console.log(numero)
             setTimeout(() => this.iluminarNumero(numero), 1200*i)
         }
     }
@@ -145,14 +174,13 @@ class Juego {
         const digitNumber = this.transformarStringANumber(nameNumber)
         this.iluminarNumero(nameNumber)
         this.mostrarNumero (digitNumber)
-        console.log(`el numero seleccionado es ${digitNumber} y el que debia elegir era ${this.secuencia[this.subNivel]}`)
         if(digitNumber === this.secuencia[this.subNivel]){
             this.subNivel++
             if(this.subNivel === this.nivel) {
                 this.nivel++
                 setTimeout (() => this.eliminarDatosPantalla(), 1000)
                 this.eliminarEventosClick()
-                if(this.nivel === (ULTIMO_NIVEL + 1)){
+                if(this.nivel === (ultimoNivel + 1)){
                 this.eliminarDatosPantalla()
                 this.ganoElJuego()
                     
@@ -179,7 +207,7 @@ class Juego {
     ganoElJuego () { 
         swal("Ganaste", "Juega de nuevo", "success")
         .then(() => {
-            this.inicializar()
+            location.reload();
         }) 
     }
     perdioElJuego () { 
@@ -193,4 +221,3 @@ class Juego {
 function iniciarJuego() {
     window.juego = new Juego()
 }
-
