@@ -10,12 +10,12 @@ html{
 }
 
 :root{
-    --generalBackground: #17202A; /*url(http://media.biobiochile.cl/wp-content/uploads/2016/02/binariocode.jpg) ; */
+    --generalBackground: #17202a; 
     --keyboardBackground: #616A6B;
     --keyboard-bytton: #9C27B0;
     --colorScreen: #AED6F1;
     --letters: #D0D3D4;
-    --secondaryButtons: #BB8FCE ;
+    --secondaryButtons: #BB8FCE;
 }
 
 body {
@@ -37,7 +37,7 @@ body .rules{
 
 body .rules h1{
     color: var(--letters);
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -49,11 +49,20 @@ body .rules p{
 }
 
 body .rules .button-level{
-    width: 9rem;
+    width: 9.5rem;
     height: 3.5rem;
     background: var(--secondaryButtons);
     cursor: pointer;
+    border: navajowhite;
+    box-shadow: inset -1px -1px 11px 0px rgb(0 0 0 / 44%);
+    margin: 0 0.2rem;
+    font-size: 1.5rem;
 }
+
+body .rules .button-level:hover{
+    transform: scale(1.1);
+}
+
 body .background{
     position: absolute;
     width: 100vw;
@@ -112,14 +121,13 @@ body .gameboard .keyboard #zero{
 
 body .gameboard .btn-start {
     background-color: var(--secondaryButtons);
-   
     grid-column: 1 / 4;
-       grid-row: 2 / 6;
-       border: none;
-       box-shadow: inset -1px -1px 18px 0px rgba(0,0,0,0.44);
-       font-size: 2rem;
-       font-weight: 700;
-       cursor: pointer;
+    grid-row: 2 / 6;
+    border: none;
+    box-shadow: inset -1px -1px 13px 0px rgb(0 0 0 / 44%);
+    font-size: 2rem;
+    font-weight: 700;
+    cursor: pointer;
    }
 
 .light{
