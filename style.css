@@ -18,21 +18,22 @@ html{
     --secondaryButtons: #BB8FCE;
 }
 
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 body {
     height: 100vh;
     max-height: 100vh;
     width: 100vw;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 body .rules{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding-bottom: 2rem;
+    flex-direction: column;
 }
 
 body .rules h1{
@@ -46,6 +47,11 @@ body .rules p{
     color: var(--letters);
     font-size: 2rem;
     margin-bottom: 1rem;
+    text-align: center;
+}
+
+body .rules .buttons-level-box{
+    flex-wrap: wrap;
 }
 
 body .rules .button-level{
@@ -81,34 +87,31 @@ body .gameboard {
     width: 30rem;
     background-color: var(--keyboardBackground);
     padding: 2rem;
+    min-height: 40rem;
     box-shadow: inset -1px -1px 18px 0px rgba(0,0,0,0.77);
 }
 
-body .gameboard #screen {
+body .gameboard .screen {
     grid-column: 1 / 4;
     background-color: var(--colorScreen);
     box-shadow: inset -1px -1px 18px 0px rgba(0,0,0,0.44);
     margin-bottom: 1rem;
     font-size: 3rem;
     font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 body .gameboard .keyboard{
     display: grid;
     grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr;
+    grid-gap: 0.1rem;
     grid-column: 1 / 4;
     grid-row: 2 / 6;
+    max-height: 30rem;
+    gap: 1rem;
 }
 
 body .gameboard .keyboard .btn-number {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background: var(--keyboard-bytton);
-    margin: 1rem;
     box-shadow: inset -1px -1px 18px 0px rgba(0, 0, 0, 0.3);   
     cursor: pointer;
     font-size: 4rem;

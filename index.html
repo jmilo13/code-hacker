@@ -9,30 +9,30 @@
     <meta name="description" content="Un juego para probar tu memoria. Tu eliges el nivel de dificultad ¿Te atreves a probarlo?">
     <link rel="stylesheet" href="./style.css?version20210312"/>
   </head>
-  <body>
+  <body class="flex-center">
     <div class="background"></div>
-    <section class="rules">
+    <section class="rules flex-center">
       <h1>Descifra la contraseña</h1>
       <p>Elige el nivel de dificultad</p>
-      <div class="buttons-level-box">
+      <div class="buttons-level-box flex-center">
         <button id="easy" class="button-level" data-level= 'easy'> Fácil: 5 </button>
         <button id="medium" class="button-level" data-level= 'medium'> Media: 10 </button>
         <button id="high" class="button-level" data-level= 'high'> Difícil: 15 </button>
       </div>
     </section>
     <section class="gameboard">
-      <div id="screen"></div>
+      <div class="screen flex-center"></div>
       <div class="keyboard">
-        <div id="one" class="btn-number" data-element="one">1</div>
-        <div id="two" class="btn-number" data-element="two">2</div>
-        <div id="three" class="btn-number" data-element="three">3</div>
-        <div id="four" class="btn-number" data-element="four">4</div>
-        <div id="five" class="btn-number" data-element="five">5</div>
-        <div id="six" class="btn-number" data-element="six">6</div>
-        <div id="seven" class="btn-number" data-element="seven">7</div>
-        <div id="eight" class="btn-number" data-element="eight">8</div>
-        <div id="nine" class="btn-number" data-element="nine">9</div>
-        <div id="zero" class="btn-number" data-element="zero">0</div>
+        <div id="one" class="btn-number flex-center" data-element="one">1</div>
+        <div id="two" class="btn-number flex-center" data-element="two">2</div>
+        <div id="three" class="btn-number flex-center" data-element="three">3</div>
+        <div id="four" class="btn-number flex-center" data-element="four">4</div>
+        <div id="five" class="btn-number flex-center" data-element="five">5</div>
+        <div id="six" class="btn-number flex-center" data-element="six">6</div>
+        <div id="seven" class="btn-number flex-center" data-element="seven">7</div>
+        <div id="eight" class="btn-number flex-center" data-element="eight">8</div>
+        <div id="nine" class="btn-number flex-center" data-element="nine">9</div>
+        <div id="zero" class="btn-number flex-center" data-element="zero">0</div>
       </div>
       <button id="btnEmpezar" class="btn-start" onclick="iniciarJuego()">Iniciar Juego</button>
     </section>
