@@ -91,7 +91,7 @@ body .gameboard {
     box-shadow: inset -1px -1px 18px 0px rgba(0,0,0,0.77);
 }
 
-body .gameboard .screen {
+body .gameboard #screen {
     grid-column: 1 / 4;
     background-color: var(--colorScreen);
     box-shadow: inset -1px -1px 18px 0px rgba(0,0,0,0.44);
